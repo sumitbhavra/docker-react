@@ -1,0 +1,10 @@
+sudo: required
+language: generic 
+services:
+  - docker
+
+before_install:
+  - docker build -t sumitbhavra/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true sumitbhavra/docker-react npm run test
